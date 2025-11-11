@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chelonia Maris GT – La Ventana</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8fdfd;
+      color: #00333a;
+    }
+
+    header {
+      background-color: #b2e4e3; /* mismo color que el pie de página */
+      color: #00333a;
+      text-align: center;
+      padding: 30px 20px;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header img.logo {
+      width: 130px;
+      display: block;
+      margin: 0 auto 10px auto;
+      border-radius: 50%;
+    }
+
+    header img.cactus {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      width: 70px;
+      opacity: 0.9;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #ffffffc9;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #00635a;
+      border-bottom: 2px solid #b2e4e3;
+      padding-bottom: 8px;
+    }
+
+    footer {
+      background-color: #b2e4e3;
+      color: #00333a;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    /* Tortuga animada */
+    .tortuga-flotante {
+      position: fixed;
+      bottom: 40px;
+      right: 50px;
+      animation: flotar 4s ease-in-out infinite;
+      z-index: 100;
+    }
+
+    .tortuga-flotante img {
+      width: 110px;
+      opacity: 0.95;
+    }
+
+    @keyframes flotar {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Logo Chelonia Maris" class="logo">
+    <img src="cactus.png" alt="Cactus decorativo" class="cactus">
+    <h1>Chelonia Maris GT – La Ventana</h1>
+  </header>
+
+  <section id="quienes-somos">
+    <h2>Quiénes somos</h2>
+    <p>Somos un grupo tortuguero comprometido con la conservación y protección de las tortugas marinas en La Ventana, Baja California Sur. Promovemos la educación ambiental y la participación comunitaria para proteger nuestro entorno marino y desértico.</p>
+  </section>
+
+  <section id="que-hacemos">
+    <h2>Lo que hacemos</h2>
+    <p>Realizamos actividades de conservación, monitoreo de nidos, liberación de crías, limpieza de playas y talleres educativos. Nuestro objetivo es fomentar el respeto y la coexistencia con la vida marina.</p>
+  </section>
+
+  <section id="galeria">
+    <h2>Galería</h2>
+    <p>Aquí podrás ver nuestras fotos próximamente 🌊🐢</p>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Facebook: <a href="https://www.facebook.com/CheloniaMarisGTLaVentana/" target="_blank">Chelonia Maris GT – La Ventana</a></p>
+    <p>Teléfonos: 6121070041 (principal) / 6121087495 (secundario)</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Chelonia Maris GT – La Ventana | Conservando nuestras tortugas y costas 🌿</p>
+  </footer>
+
+  <div class="tortuga-flotante">
+    <img src="tortuga.png" alt="Tortuga marina flotante">
+  </div>
+
+</body>
+</html>
