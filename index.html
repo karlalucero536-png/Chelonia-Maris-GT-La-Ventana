@@ -30,7 +30,7 @@
       position:relative;
       text-align:center;
       padding:48px 20px 36px;
-      background:linear-gradient(180deg,#ffffffcc 0%,#f6fdfd 100%);
+      background:linear-gradient(180deg,#f5e9d8 0%,#fffaf3 100%);
       box-shadow:0 2px 8px var(--sombra);
     }
 
@@ -40,7 +40,10 @@
       margin:0 auto 12px;
       width:160px;
       height:auto;
-      filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+      border-radius:50%;
+      background:var(--arena);
+      padding:10px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
     }
 
     header h1{
@@ -56,12 +59,12 @@
       font-size:16px;
     }
 
-    /* Cactus SVG mejorado */
+    /* Cactus SVG más realista pero minimalista */
     .cactus{
       position:absolute;
-      top:16px;
+      top:12px;
       right:24px;
-      width:55px;
+      width:60px;
       opacity:0.9;
     }
 
@@ -140,14 +143,14 @@
       position:fixed;
       bottom:20px;
       right:20px;
-      width:90px;
-      height:90px;
+      width:100px;
+      height:100px;
       z-index:999;
     }
 
     .tortuga{
       width:100%;
-      animation:nadar 6s ease-in-out infinite;
+      animation:nadar 5s ease-in-out infinite;
     }
 
     @keyframes nadar{
@@ -186,13 +189,15 @@
 <body>
 
   <header>
-    <!-- Cactus mejorado -->
+    <!-- Cactus minimalista más realista -->
     <svg class="cactus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-      <path fill="#1F8A6B" d="M30 4c-2 0-4 2-4 4v14h-6c-3 0-6 3-6 6v8c0 3 3 6 6 6h6v16c0 3 2 6 4 6s4-3 4-6V4z"/>
-      <path fill="#166B52" d="M42 14c-2 0-4 2-4 4v10h4c2 0 4 2 4 4v4c0 2-2 4-4 4h-4v12c0 3 2 6 4 6s4-3 4-6V18c0-2-2-4-4-4z"/>
+      <path fill="#1F8A6B" d="M32 4c-2 0-4 2-4 4v16h-6c-3 0-6 3-6 6v8c0 3 3 6 6 6h6v16c0 3 2 6 4 6s4-3 4-6V36h6c3 0 6-3 6-6v-8c0-3-3-6-6-6h-6V8c0-2-2-4-4-4z"/>
+      <circle cx="32" cy="4" r="2" fill="#166B52"/>
+      <circle cx="26" cy="18" r="2" fill="#166B52"/>
+      <circle cx="38" cy="20" r="2" fill="#166B52"/>
     </svg>
 
-    <!-- Logo -->
+    <!-- Logo con fondo arena -->
     <img src="2377e415-fc66-494c-b51d-02e2fed309d8.png" alt="Logo Chelonia Maris GT" class="logo">
 
     <h1>Chelonia Maris GT – La Ventana</h1>
@@ -251,16 +256,16 @@
     © 2025 Chelonia Maris GT – La Ventana • Conservación con corazón
   </footer>
 
-  <!-- Tortuga flotante tipo dibujo -->
+  <!-- Tortuga flotante tipo dibujo más realista -->
   <div class="tortuga-container">
     <svg class="tortuga" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-      <ellipse cx="50" cy="55" rx="30" ry="20" fill="#1F8A6B" />
-      <circle cx="50" cy="30" r="10" fill="#166B52" />
-      <ellipse cx="20" cy="55" rx="8" ry="12" fill="#1F8A6B" />
-      <ellipse cx="80" cy="55" rx="8" ry="12" fill="#1F8A6B" />
-      <ellipse cx="35" cy="75" rx="8" ry="12" fill="#1F8A6B" />
-      <ellipse cx="65" cy="75" rx="8" ry="12" fill="#1F8A6B" />
-      <circle cx="50" cy="55" r="8" fill="#C54231" />
+      <ellipse cx="50" cy="55" rx="28" ry="18" fill="#1F8A6B"/>
+      <circle cx="50" cy="32" r="10" fill="#166B52"/>
+      <path d="M22 55c0 10 6 15 12 10" stroke="#166B52" stroke-width="6" stroke-linecap="round"/>
+      <path d="M78 55c0 10-6 15-12 10" stroke="#166B52" stroke-width="6" stroke-linecap="round"/>
+      <path d="M38 72c-4 4-10 0-8-6" stroke="#166B52" stroke-width="6" stroke-linecap="round"/>
+      <path d="M62 72c4 4 10 0 8-6" stroke="#166B52" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="50" cy="55" r="6" fill="#C54231"/>
     </svg>
     <div class="burbuja"></div>
     <div class="burbuja"></div>
