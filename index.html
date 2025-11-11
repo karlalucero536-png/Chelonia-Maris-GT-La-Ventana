@@ -1,168 +1,310 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chelonia Maris GT - Conservación Marina</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chelonia Maris GT - La Ventana</title>
+
+  <!-- Google font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #f0f7f5;
-      color: #333;
+    :root{
+      --sea-1: #00b4c4;        /* turquesa vivo */
+      --sea-2: #007a99;        /* azul marino suave */
+      --sand: #f5e9d8;         /* arena clara */
+      --accent: #1f8a6b;       /* verde marino */
+      --dark: #12343b;
+      --white: #ffffff;
+      --shadow: rgba(17,24,39,0.12);
     }
 
-    header {
-      background: linear-gradient(120deg, #00796b, #004d40);
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      color:var(--dark);
+      background: linear-gradient(180deg,var(--sea-1) 0%, #cfeff3 40%, var(--sand) 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.8em;
+    /* --- Encabezado --- */
+    header.site-header{
+      position:relative;
+      text-align:center;
+      padding:42px 20px 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.0));
+      backdrop-filter: blur(2px);
     }
 
-    header p {
-      font-size: 1.2em;
+    /* cactus minimalista top-right (en el header) */
+    .cactus {
+      position:absolute;
+      top:18px;
+      right:18px;
+      width:56px;
+      height:56px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.12));
     }
 
-    nav {
-      background-color: #00695c;
-      text-align: center;
-      padding: 15px;
+    /* logo (placeholder). Reemplaza el <img> por tu logo */
+    .logo {
+      display:block;
+      margin: 0 auto 8px;
+      width:120px;
+      height:120px;
+      border-radius:999px;
+      background: linear-gradient(135deg,var(--white),#e6fbff);
+      box-shadow: 0 8px 18px var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      border:4px solid rgba(255,255,255,0.6);
+    }
+    .logo img{width:100%;height:100%;object-fit:cover}
+
+    header h1{
+      margin: 12px 0 4px;
+      font-size:28px;
+      color:var(--dark);
+      font-weight:600;
+    }
+    header p{margin:0;color:var(--sea-2);font-weight:400}
+
+    /* Navegación simple */
+    nav.main-nav{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      padding:14px 12px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    nav.main-nav a{
+      text-decoration:none;
+      color:var(--white);
+      background: linear-gradient(90deg,var(--accent),var(--sea-2));
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:600;
+      box-shadow:0 6px 14px rgba(0,0,0,0.12);
+    }
+    nav.main-nav a:hover{transform:translateY(-2px); transition:all .18s ease}
+
+    /* Contenido principal */
+    .container{
+      max-width:980px;
+      margin:28px auto;
+      padding:0 18px 80px;
+      background: rgba(255,255,255,0.45);
+      border-radius:14px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+      backdrop-filter: blur(6px);
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: 600;
+    section{padding:28px 18px}
+    h2{
+      color:var(--sea-2);
+      margin:0 0 12px;
+      font-size:22px;
+      display:inline-block;
+      border-bottom:4px solid rgba(31,138,107,0.12);
+      padding-bottom:6px;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    p.lead{color:#164a4f; margin-top:6px; line-height:1.6}
+
+    /* list */
+    ul.clean{padding-left:18px; margin:12px 0 0}
+    ul.clean li{margin:10px 0; line-height:1.6}
+
+    /* Galería cards */
+    .galeria-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+      margin-top:12px;
+    }
+    .galeria-grid img{
+      width:100%;
+      max-width:300px;
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(2,6,23,0.08);
+      object-fit:cover;
+      height:190px;
     }
 
-    section {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 20px;
+    /* Donaciones */
+    .donar-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:12px;
+    }
+    .btn-donar{
+      background: linear-gradient(90deg,var(--sea-1),var(--accent));
+      color:var(--white);
+      padding:12px 18px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700;
+      box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    }
+    .btn-secondary{
+      background:transparent;
+      border:2px dashed rgba(31,138,107,0.25);
+      padding:10px 14px;
+      border-radius:10px;
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
     }
 
-    h2 {
-      color: #004d40;
-      border-bottom: 3px solid #009688;
-      display: inline-block;
-      margin-bottom: 20px;
+    /* Contacto */
+    .contact-list p{margin:8px 0; font-weight:600}
+    .contact-list a{color:var(--sea-2); text-decoration:none}
+
+    /* Pie */
+    footer.site-footer{
+      margin-top:18px;
+      padding:20px;
+      text-align:center;
+      color:var(--white);
+      background: linear-gradient(90deg,var(--sea-2),var(--accent));
+      border-radius:0 0 12px 12px;
     }
 
-    .galeria img {
-      width: 100%;
-      max-width: 420px;
-      border-radius: 12px;
-      margin: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    /* Tortuga fija en esquina inferior derecha */
+    .floating-turtle{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:110px;
+      height:110px;
+      z-index:9999;
+      pointer-events:none; /* no interferirá con clicks */
+      transform:translateY(6px);
+      transition:transform .25s ease;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.18));
     }
-
-    .donar {
-      background-color: #009688;
-      color: white;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1em;
-      transition: background 0.3s;
+    /* pequeña animación de nado */
+    @keyframes float-swim {
+      0%{transform: translateY(4px) rotate(-3deg)}
+      50%{transform: translateY(-6px) rotate(3deg)}
+      100%{transform: translateY(4px) rotate(-3deg)}
     }
+    .floating-turtle img{width:100%;height:100%;object-fit:contain; animation: float-swim 4s ease-in-out infinite;}
 
-    .donar:hover {
-      background-color: #00796b;
-    }
-
-    footer {
-      background-color: #004d40;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-
-    footer a {
-      color: #80cbc4;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
+    /* Responsive */
+    @media (max-width:720px){
+      .floating-turtle{width:78px;height:78px; right:12px; bottom:12px}
+      .logo{width:86px;height:86px}
+      header h1{font-size:20px}
+      nav.main-nav a{padding:8px 10px; font-size:13px}
+      .galeria-grid img{height:140px}
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Grupo Tortuguero Chelonia Maris</h1>
-    <p>Protegiendo tortugas marinas en La Ventana y El Sargento, BCS 🐢</p>
+
+  <header class="site-header">
+    <!-- cactus minimalista (SVG) -->
+    <div class="cactus" aria-hidden="true">
+      <svg viewBox="0 0 64 64" width="56" height="56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="none" stroke="none">
+          <rect x="0" y="0" width="64" height="64" rx="12" fill="rgba(255,255,255,0.35)"/>
+        </g>
+        <g transform="translate(8,8)" fill="none" stroke="none">
+          <path d="M22 4c0-2-2-4-4-4s-4 2-4 4v6H6c-2 0-4 2-4 4s2 4 4 4h0v8c0 4 4 6 8 6s8-2 8-6V24h2c2 0 4-2 4-4s-2-4-4-4H22V4z" fill="#2f9b6f"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- logo centrado: reemplaza src por tu logo cuando lo tengas -->
+    <div class="logo" aria-label="Logo Chelonia Maris">
+      <!-- placeholder: puedes cambiar la imagen por tu logo -->
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Green_turtle_swimming_over_coral_reefs_in_Kona.jpg/800px-Green_turtle_swimming_over_coral_reefs_in_Kona.jpg" alt="Logo (placeholder)">
+    </div>
+
+    <h1>Chelonia Maris GT — La Ventana</h1>
+    <p>Protegiendo tortugas marinas y nuestras playas • Conservación comunitaria</p>
+
+    <!-- navegación -->
+    <nav class="main-nav" role="navigation" aria-label="Menú principal">
+      <a href="#quienes">Quiénes somos</a>
+      <a href="#que-hacemos">Qué hacemos</a>
+      <a href="#galeria">Galería</a>
+      <a href="#donaciones">Donaciones</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
   </header>
 
-  <nav>
-    <a href="#quienes">Quiénes somos</a>
-    <a href="#que-hacemos">Qué hacemos</a>
-    <a href="#galeria">Galería</a>
-    <a href="#donaciones">Donaciones</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
+  <main class="container" role="main">
+    <section id="quienes" aria-labelledby="q-titulo">
+      <h2 id="q-titulo">Quiénes somos</h2>
+      <p class="lead">
+        Chelonia Maris GT es un grupo tortuguero comunitario de La Ventana y El Sargento,
+        Baja California Sur. Trabajamos con la comunidad para proteger nidos, liberar crías,
+        y educar sobre prácticas responsables en la costa.
+      </p>
+    </section>
 
-  <section id="quienes">
-    <h2>Quiénes somos</h2>
-    <p>
-      Somos un grupo de voluntarios dedicados a la conservación de las tortugas marinas
-      y sus hábitats en la Bahía de La Ventana, Baja California Sur.
-      Nuestro trabajo busca inspirar a la comunidad a cuidar el océano y las playas
-      donde anidan estas especies tan importantes para el ecosistema.
-    </p>
-  </section>
+    <section id="que-hacemos" aria-labelledby="qh-titulo">
+      <h2 id="qh-titulo">Qué hacemos</h2>
+      <ul class="clean">
+        <li>Monitoreo nocturno de arribadas y protección de nidos.</li>
+        <li>Recolección y cuidado temporal de crías para liberación segura.</li>
+        <li>Talleres y visitas educativas con escuelas y visitantes.</li>
+        <li>Jornadas de limpieza de playa y huertos comunitarios.</li>
+      </ul>
+    </section>
 
-  <section id="que-hacemos">
-    <h2>Qué hacemos</h2>
-    <ul>
-      <li>Monitoreo de nidos y liberación de crías 🐢</li>
-      <li>Educación ambiental con escuelas y turistas 📚</li>
-      <li>Campañas de limpieza de playas ♻️</li>
-      <li>Proyectos de conservación comunitaria 🌿</li>
-    </ul>
-  </section>
+    <section id="galeria" aria-labelledby="g-titulo">
+      <h2 id="g-titulo">Galería</h2>
+      <p class="lead">Fotos de liberaciones, playas y nuestro trabajo (temporalmente imágenes de muestra).</p>
+      <div class="galeria-grid" role="list">
+        <img role="listitem" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=60" alt="Tortuga en la playa">
+        <img role="listitem" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=60" alt="Tortuga nadando">
+        <img role="listitem" src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?auto=format&fit=crop&w=800&q=60" alt="Playa limpia">
+      </div>
+    </section>
 
-  <section id="galeria" class="galeria">
-    <h2>Galería</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Baby_turtle_release.jpg" alt="Liberación de tortugas">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Sea_turtle_in_water.jpg" alt="Tortuga en el mar">
-  </section>
+    <section id="donaciones" aria-labelledby="d-titulo">
+      <h2 id="d-titulo">Donaciones</h2>
+      <p class="lead">Tu apoyo permite comprar materiales para la protección de nidos, equipos y talleres educativos.</p>
+      <div class="donar-row">
+        <a class="btn-donar" href="https://www.paypal.com/donate" target="_blank" rel="noopener">Donar con PayPal</a>
+        <a class="btn-secondary" href="#contacto">Contacto para transferencias</a>
+      </div>
+    </section>
 
-  <section id="donaciones">
-    <h2>Donaciones</h2>
-    <p>
-      Tu apoyo permite continuar nuestras actividades de conservación, educación ambiental
-      y protección de nidos.  
-    </p>
-    <button class="donar" onclick="window.location.href='https://www.paypal.com/donate'">Donar con PayPal</button>
-  </section>
+    <section id="contacto" aria-labelledby="c-titulo">
+      <h2 id="c-titulo">Contacto</h2>
+      <div class="contact-list">
+        <p>📍 La Ventana, Baja California Sur, México</p>
+        <p>📱 Principal: <a href="tel:+526121070041">612 107 0041</a></p>
+        <p>📞 Secundario: <a href="tel:+526121087495">612 108 7495</a></p>
+        <p>🌐 Facebook: <a href="https://www.facebook.com/CheloniaMarisGTLaVentana/" target="_blank" rel="noopener">CheloniaMarisGTLaVentana</a></p>
+      </div>
+    </section>
+  </main>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>📍 La Ventana, Baja California Sur, México</p>
-    <p>📧 contacto@cheloniamaris.org</p>
-    <p>🌐 Síguenos en redes sociales:</p>
-    <p>
-      <a href="#">Facebook</a> |
-      <a href="#">Instagram</a>
-    </p>
-  </section>
-
-  <footer>
-    <p>© 2025 Chelonia Maris GT - La Ventana | Conservación con corazón 💚</p>
+  <footer class="site-footer" role="contentinfo">
+    <p>© 2025 Chelonia Maris GT — La Ventana • Conservación con corazón</p>
   </footer>
+
+  <!-- Tortuga fija (imagen realista pequeña). Reemplaza src por tu imagen preferida cuando la tengas -->
+  <div class="floating-turtle" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=600&q=60" alt="Tortuga marina flotante">
+  </div>
+
 </body>
 </html>
