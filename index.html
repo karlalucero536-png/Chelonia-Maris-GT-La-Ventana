@@ -142,24 +142,34 @@
       margin-top:20px;
     }
 
-   /* 🐢 Tortuga animada tipo dibujo (derecha) */
+    /* 🐢 Tortuga animada ida y vuelta */
     .tortuga-container {
       position: fixed;
       bottom: 20px;
-      right: 20px;
+      left: 0;
       width: 180px;
       height: auto;
       z-index: 999;
-      animation: nadar 8s ease-in-out infinite;
-      transform: scaleX(-1); /* mirando hacia la derecha */
+      animation: nadar 14s ease-in-out infinite;
     }
 
-   @keyframes nadar {
-  0% { transform: translateX(0) scaleX(-1); }
-  50% { transform: translateX(85vw) translateY(-12px) scaleX(-1); } /* llega a la derecha */
-  100% { transform: translateX(0) scaleX(-1); }
-}
-
+    @keyframes nadar {
+      0% {
+        transform: translateX(0) scaleX(1); /* empieza mirando a la derecha */
+      }
+      49% {
+        transform: translateX(85vw) scaleX(1); /* llega a la derecha */
+      }
+      50% {
+        transform: translateX(85vw) scaleX(-1); /* gira horizontalmente */
+      }
+      99% {
+        transform: translateX(0) scaleX(-1); /* regresa mirando a la izquierda */
+      }
+      100% {
+        transform: translateX(0) scaleX(1); /* gira de nuevo al llegar */
+      }
+    }
 
     .burbuja{
       position:absolute;
