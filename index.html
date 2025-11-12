@@ -26,11 +26,12 @@
       overflow-x:hidden;
     }
 
+    /* 🟩 Encabezado */
     header{
       position:relative;
       text-align:center;
-      padding:48px 20px 36px;
-      background:linear-gradient(90deg,var(--rojo),var(--verde)); /* 🔹 color igual que el footer */
+      padding:60px 20px;
+      background:linear-gradient(90deg,var(--verde) 0%, var(--rojo) 100%);
       box-shadow:0 2px 8px var(--sombra);
       color:var(--blanco);
     }
@@ -40,17 +41,16 @@
       margin:0 auto 12px;
       width:160px;
       height:auto;
-      border-radius:50%;
-      background:var(--arena);
-      padding:10px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+      border-radius:0;
+      background:none;
+      box-shadow:none;
     }
 
     header h1{
-      font-size:28px;
+      font-size:30px;
       font-weight:600;
       color:var(--blanco);
-      margin-bottom:4px;
+      margin-bottom:6px;
     }
 
     header p{
@@ -58,30 +58,30 @@
       font-weight:400;
       font-size:16px;
     }
-    
+
     .cactus {
-  position: absolute;
-  top: 12px;
-  right: 24px;
-  width: 60px;
-  height: auto;
-  opacity: 0.9;
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      width: 70px;
+      height: auto;
+      opacity: 0.9;
     }
 
-
+    /* Menú */
     nav{
-      margin-top:18px;
+      margin-top:22px;
       display:flex;
       flex-wrap:wrap;
       justify-content:center;
-      gap:10px;
+      gap:12px;
     }
 
     nav a{
       background:var(--blanco);
       color:var(--verde);
       text-decoration:none;
-      padding:10px 16px;
+      padding:10px 18px;
       border-radius:999px;
       font-weight:600;
       transition:transform .2s ease, background .3s;
@@ -132,7 +132,7 @@
 
     footer{
       text-align:center;
-      background:linear-gradient(90deg,var(--rojo),var(--verde));
+      background:linear-gradient(90deg,var(--verde) 0%, var(--rojo) 100%);
       color:var(--blanco);
       padding:20px;
       font-size:14px;
@@ -141,15 +141,15 @@
     }
 
    /* 🐢 Tortuga animada tipo dibujo */
-.tortuga-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 150px; /* ✅ la hicimos más grande */
-  height: auto;
-  z-index: 999;
-  animation: nadar 6s ease-in-out infinite;
-}
+    .tortuga-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 180px; /* 🐢 un poco más grande */
+      height: auto;
+      z-index: 999;
+      animation: nadar 6s ease-in-out infinite;
+    }
 
     @keyframes nadar{
       0%,100%{transform:translateY(0) rotate(0deg);}
@@ -179,21 +179,17 @@
       .logo{width:120px;}
       header h1{font-size:22px;}
       nav a{font-size:14px;padding:8px 12px;}
-      .tortuga-container{width:80px;}
+      .tortuga-container{width:100px;}
     }
   </style>
 </head>
 <body>
 
- <header>
-  <img src="cactus.png.png" alt="Cactus decorativo" class="cactus">
-</header>
-
-
-    <img src="logo.png.png" alt="Logo Chelonia Maris GT" class="logo">
-
+  <header>
+    <img src="logo.png" alt="Logo Chelonia Maris GT" class="logo">
     <h1>Chelonia Maris GT – La Ventana</h1>
     <p>Protegiendo tortugas marinas y nuestras playas • Conservación comunitaria</p>
+    <img src="cactus.png" alt="Cactus decorativo" class="cactus">
 
     <nav>
       <a href="#quienes">Quiénes somos</a>
@@ -250,7 +246,7 @@
 
   <!-- 🐢 Imagen de tortuga flotante con burbujas -->
   <div class="tortuga-container">
-    <img src="8d4019d6-25fe-4527-a3df-eb386ae77ed3.png" alt="Tortuga marina animada" style="width:100%;height:auto;">
+    <img src="tortuga.png" alt="Tortuga marina animada" style="width:100%;height:auto;">
     <div class="burbuja"></div>
     <div class="burbuja"></div>
     <div class="burbuja"></div>
