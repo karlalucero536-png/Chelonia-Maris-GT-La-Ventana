@@ -36,17 +36,16 @@
       color:var(--blanco);
     }
 
-    /* Logo redondo */
-    .logo{
-      display:block;
-      margin:0 auto 12px;
-      width:160px;
-      height:160px;
-      border-radius:50%;
-      object-fit:cover;
-      background:none;
-      box-shadow:0 0 10px rgba(0,0,0,0.2);
-    }
+    .logo {
+  display: block;
+  margin: 0 auto 12px;
+  width: 180px;          /* un poco más grande */
+  height: 180px;
+  border-radius: 50%;
+  object-fit: contain;   /* ahora el logo se ajusta sin recortarse */
+  background: var(--arena);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
 
     header h1{
       font-size:34px;
