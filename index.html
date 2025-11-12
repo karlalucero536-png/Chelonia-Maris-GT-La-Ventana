@@ -245,21 +245,6 @@
       </div>
     </section>
     
-<section id="especies">
-  <h2>Especies marinas de Baja California Sur</h2>
-  <p>En nuestras costas habitan diversas especies de tortugas marinas. Algunas visitan nuestras playas para anidar, otras para alimentarse, y todas son importantes para el equilibrio de los ecosistemas marinos.</p>
-
-  <div class="galeria-grid">
-
-    <img src="tortuga-golfina.jpg" alt="Tortuga Golfina" class="modal-img" onclick="openModal(this)">
-    <img src="tortuga-laud.jpg" alt="Tortuga Laud" class="modal-img" onclick="openModal(this)">
-    <img src="tortuga-verde.jpg" alt="Tortuga Verde" class="modal-img" onclick="openModal(this)">
-    <img src="tortuga-carey.jpg" alt="Tortuga Carey" class="modal-img" onclick="openModal(this)">
-    <img src="tortuga-caguama.jpg" alt="Tortuga Caguama" class="modal-img" onclick="openModal(this)">
-
-  </div>
-</section>
-
 <!-- Modal -->
 <div id="modal" class="modal">
   <span class="close" onclick="closeModal()">&times;</span>
@@ -269,48 +254,35 @@
   </div>
 </div>
 
-<!-- CSS -->
 <style>
-  .galeria-grid img.modal-img {
-    width: 100%;
-    max-width: 250px;
-    border-radius: 12px;
-    margin: 8px;
-    cursor: pointer;
-    object-fit: cover;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.2s;
-  }
-
-  .galeria-grid img.modal-img:hover {
-    transform: scale(1.05);
-  }
-
-  /* Modal styles */
   .modal {
     display: none;
     position: fixed;
     z-index: 999;
-    padding-top: 60px;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.85);
-    overflow-y: auto; /* permite scroll si la ventana es muy pequeña */
     text-align: center;
+    overflow: hidden; /* evita scroll */
   }
 
   .modal-content-container {
-    display: inline-block;
-    margin: auto;
-    max-width: 90%;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
   }
 
   .modal-content {
-    width: 100%;
-    height: auto; /* mantiene proporción completa */
+    max-height: 80vh; /* altura máxima 80% de la ventana */
+    max-width: 90vw;  /* ancho máximo 90% de la ventana */
+    width: auto;
+    height: auto;
     border-radius: 12px;
     object-fit: contain;
   }
@@ -320,6 +292,8 @@
     color: #fff;
     font-size: 16px;
     line-height: 1.5;
+    max-height: 20vh; /* descripción ocupa máximo 20% de la ventana */
+    overflow-y: auto;
   }
 
   .close {
@@ -337,39 +311,16 @@
   }
 
   @media (max-width: 720px) {
-    .modal-content-container {
-      max-width: 95%;
+    .modal-content {
+      max-height: 70vh;
+      max-width: 95vw;
     }
     #modal-caption {
       font-size: 14px;
+      max-height: 25vh;
     }
   }
 </style>
-
-<!-- JavaScript -->
-<script>
-  const descripcionTortugas = {
-    "Tortuga Golfina": "Tortuga Golfina (Lepidochelys olivacea) – Esta especie anida y se alimenta en nuestras costas. Su dieta consiste principalmente en pequeños invertebrados y algas. Es la tortuga más pequeña de la región y se encuentra en peligro de extinción.",
-    "Tortuga Laud": "Tortuga Laud (Dermochelys coriacea) – Anida en nuestras playas. Es la tortuga más grande del mundo y carece de caparazón duro, teniendo una piel gruesa cubierta de cartílago. Se alimenta principalmente de medusas y está críticamente amenazada.",
-    "Tortuga Verde": "Tortuga Verde (Chelonia mydas) – Se alimenta en nuestras aguas y ocasionalmente puede anidar. Su dieta es principalmente herbívora, alimentándose de pastos marinos y algas. Está en peligro de extinción y es fundamental para la salud de los ecosistemas costeros.",
-    "Tortuga Carey": "Tortuga Carey (Eretmochelys imbricata) – Se alimenta en nuestras costas. Es reconocida por su hermoso caparazón con patrones de color y se encuentra críticamente amenazada. Su dieta incluye esponjas, moluscos y otros invertebrados marinos.",
-    "Tortuga Caguama": "Tortuga Caguama (Caretta caretta) – Se alimenta en nuestras aguas. Es una tortuga de gran tamaño, con caparazón marrón rojizo, que se alimenta principalmente de cangrejos, moluscos y medusas. Se encuentra en peligro de extinción."
-  };
-
-  function openModal(img) {
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modal-img");
-    const caption = document.getElementById("modal-caption");
-
-    modal.style.display = "block";
-    modalImg.src = img.src;
-    caption.innerText = descripcionTortugas[img.alt];
-  }
-
-  function closeModal() {
-    document.getElementById("modal").style.display = "none";
-  }
-</script>
 
 
 
