@@ -30,24 +30,26 @@
     header{
       position:relative;
       text-align:center;
-      padding:80px 20px;
+      padding:100px 20px 90px;
       background:linear-gradient(90deg,var(--verde) 0%, var(--rojo) 100%);
       box-shadow:0 2px 8px var(--sombra);
       color:var(--blanco);
     }
 
+    /* Logo redondo */
     .logo{
       display:block;
       margin:0 auto 12px;
       width:160px;
-      height:auto;
-      border-radius:0;
+      height:160px;
+      border-radius:50%;
+      object-fit:cover;
       background:none;
-      box-shadow:none;
+      box-shadow:0 0 10px rgba(0,0,0,0.2);
     }
 
     header h1{
-      font-size:30px;
+      font-size:34px;
       font-weight:600;
       color:var(--blanco);
       margin-bottom:6px;
@@ -56,25 +58,25 @@
     header p{
       color:var(--arena);
       font-weight:400;
-      font-size:16px;
+      font-size:18px;
     }
 
     .cactus {
       position: absolute;
-      top: 16px;
+      top: 18px;
       right: 24px;
-      width: 70px;
+      width: 80px;
       height: auto;
       opacity: 0.9;
     }
 
     /* Menú */
     nav{
-      margin-top:22px;
+      margin-top:28px;
       display:flex;
       flex-wrap:wrap;
       justify-content:center;
-      gap:12px;
+      gap:14px;
     }
 
     nav a{
@@ -140,12 +142,12 @@
       margin-top:20px;
     }
 
-   /* 🐢 Tortuga animada tipo dibujo (ahora a la izquierda) */
+   /* 🐢 Tortuga animada tipo dibujo (izquierda) */
     .tortuga-container {
       position: fixed;
       bottom: 20px;
       left: 20px;
-      width: 180px; /* más grande */
+      width: 180px;
       height: auto;
       z-index: 999;
       animation: nadar 8s ease-in-out infinite;
@@ -178,7 +180,7 @@
     }
 
     @media(max-width:720px){
-      .logo{width:120px;}
+      .logo{width:120px;height:120px;}
       header h1{font-size:22px;}
       nav a{font-size:14px;padding:8px 12px;}
       .tortuga-container{width:100px;}
@@ -188,7 +190,7 @@
 <body>
 
   <header>
-    <img src="-logo.png.png" alt="Logo Chelonia Maris GT" class="logo">
+    <img src="logo.png.png" alt="Logo Chelonia Maris GT" class="logo">
     <h1>Chelonia Maris GT – La Ventana</h1>
     <p>Protegiendo tortugas marinas y nuestras playas • Conservación comunitaria</p>
     <img src="cactus.png.png" alt="Cactus decorativo" class="cactus">
