@@ -37,15 +37,15 @@
     }
 
     .logo {
-  display: block;
-  margin: 0 auto 12px;
-  width: 180px;          /* un poco más grande */
-  height: 180px;
-  border-radius: 50%;
-  object-fit: contain;   /* ahora el logo se ajusta sin recortarse */
-  background: none;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
+      display: block;
+      margin: 0 auto 12px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
 
     header h1{
       font-size:34px;
@@ -69,7 +69,6 @@
       opacity: 0.9;
     }
 
-    /* Menú */
     nav{
       margin-top:28px;
       display:flex;
@@ -129,6 +128,12 @@
       object-fit:cover;
       height:190px;
       box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      cursor:pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .galeria-grid img:hover{
+      transform: scale(1.05);
     }
 
     footer{
@@ -153,21 +158,11 @@
     }
 
     @keyframes nadar {
-      0% {
-        transform: translateX(0) scaleX(1); /* empieza mirando a la derecha */
-      }
-      49% {
-        transform: translateX(85vw) scaleX(1); /* llega a la derecha */
-      }
-      50% {
-        transform: translateX(85vw) scaleX(-1); /* gira horizontalmente */
-      }
-      99% {
-        transform: translateX(0) scaleX(-1); /* regresa mirando a la izquierda */
-      }
-      100% {
-        transform: translateX(0) scaleX(1); /* gira de nuevo al llegar */
-      }
+      0% { transform: translateX(0) scaleX(1);}
+      49% { transform: translateX(85vw) scaleX(1);}
+      50% { transform: translateX(85vw) scaleX(-1);}
+      99% { transform: translateX(0) scaleX(-1);}
+      100% { transform: translateX(0) scaleX(1);}
     }
 
     .burbuja{
@@ -195,6 +190,64 @@
       nav a{font-size:14px;padding:8px 12px;}
       .tortuga-container{width:100px;}
     }
+
+    /* --- Modal CSS --- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .modal-content-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .modal-content {
+      max-height: 80vh;
+      max-width: 90vw;
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    #modal-caption {
+      margin-top: 12px;
+      color: #fff;
+      font-size: 16px;
+      line-height: 1.5;
+      max-height: 20vh;
+      overflow-y: auto;
+      text-align:left;
+      max-width:90vw;
+    }
+
+    .close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #ccc;
+    }
   </style>
 </head>
 <body>
@@ -209,6 +262,7 @@
       <a href="#quienes">Quiénes somos</a>
       <a href="#que-hacemos">Qué hacemos</a>
       <a href="#galeria">Galería</a>
+      <a href="#especies">Especies</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
@@ -217,12 +271,12 @@
     <section id="quienes">
       <h2>Quiénes somos</h2>
       <p>
-      "Chelonia Maris Grupo Tortuguero La Ventana" comenzó su historia hace más de 15 años con el objetivo de conservar y proteger
+        "Chelonia Maris Grupo Tortuguero La Ventana" comenzó su historia hace más de 15 años con el objetivo de conservar y proteger
         a las tortugas marinas que anidan y se alimentan en nuestras costas. 
-      Nuestro equipo está formado por volunatrios de las comunidades de El Sargento y La Ventana Baja California Sur, quienes dedican
+        Nuestro equipo está formado por voluntarios de las comunidades de El Sargento y La Ventana Baja California Sur, quienes dedican
         su tiempo a la conservación protegiendo nidos y monitoreando las playas de la bahía.
-      A lo largo de los años hemos liberado cientos de tortugas intentando generar conciencia en los habitantes y turistas que llegan a nuestra comunidad.
-      Te invitamos a sumarte a nuestra misión de cuidar y proteger el ecosistema. 
+        A lo largo de los años hemos liberado cientos de tortugas intentando generar conciencia en los habitantes y turistas que llegan a nuestra comunidad.
+        Te invitamos a sumarte a nuestra misión de cuidar y proteger el ecosistema. 
       </p>
     </section>
 
@@ -244,154 +298,30 @@
         <img src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?auto=format&fit=crop&w=800&q=60" alt="Voluntarios en playa">
       </div>
     </section>
-    
-<!-- Modal -->
-<div id="modal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <div class="modal-content-container">
-    <img class="modal-content" id="modal-img">
-    <div id="modal-caption"></div>
-  </div>
-</div>
 
-<style>
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.85);
-    text-align: center;
-    overflow: hidden; /* evita scroll */
-  }
+    <!-- 🐢 Sección de especies con modal -->
+    <section id="especies">
+      <h2>Especies marinas de Baja California Sur</h2>
+      <p>En nuestras costas habitan diversas especies de tortugas marinas. Haz clic en una imagen para conocer más información sobre cada especie.</p>
+      <div class="galeria-grid">
+        <img src="images/tortuga-golfina.jpg" alt="Tortuga Golfina" data-caption="<strong>Tortuga Golfina</strong> (Lepidochelys olivacea) – Anida y se alimenta en nuestras costas. Dieta: invertebrados y algas. Peligro de extinción.">
+        <img src="images/tortuga-laud.jpg" alt="Tortuga Laud" data-caption="<strong>Tortuga Laud</strong> (Dermochelys coriacea) – Anida en nuestras playas. Es la más grande, sin caparazón duro. Se alimenta de medusas. Críticamente amenazada.">
+        <img src="images/tortuga-verde.jpg" alt="Tortuga Verde" data-caption="<strong>Tortuga Verde</strong> (Chelonia mydas) – Se alimenta en nuestras aguas y ocasionalmente puede anidar. Dieta: pastos marinos y algas. En peligro de extinción.">
+        <img src="images/tortuga-carey.jpg" alt="Tortuga Carey" data-caption="<strong>Tortuga Carey</strong> (Eretmochelys imbricata) – Se alimenta en nuestras costas. Caparazón con patrones de color. Dieta: esponjas, moluscos. Críticamente amenazada.">
+        <img src="images/tortuga-caguama.jpg" alt="Tortuga Caguama" data-caption="<strong>Tortuga Caguama</strong> (Caretta caretta) – Se alimenta en nuestras aguas. Gran tamaño, caparazón marrón rojizo. Dieta: cangrejos, moluscos, medusas. En peligro de extinción.">
+      </div>
+    </section>
 
-  .modal-content-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  .modal-content {
-    max-height: 80vh; /* altura máxima 80% de la ventana */
-    max-width: 90vw;  /* ancho máximo 90% de la ventana */
-    width: auto;
-    height: auto;
-    border-radius: 12px;
-    object-fit: contain;
-  }
-
-  #modal-caption {
-    margin-top: 12px;
-    color: #fff;
-    font-size: 16px;
-    line-height: 1.5;
-    max-height: 20vh; /* descripción ocupa máximo 20% de la ventana */
-    overflow-y: auto;
-  }
-
-  .close {
-    position: absolute;
-    top: 25px;
-    right: 35px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .close:hover {
-    color: #ccc;
-  }
-
-  @media (max-width: 720px) {
-    .modal-content {
-      max-height: 70vh;
-      max-width: 95vw;
-    }
-    #modal-caption {
-      font-size: 14px;
-      max-height: 25vh;
-    }
-  }
-</style>
-
-
-
-
-<!-- 🐢 Sección de Publicaciones -->
-<section id="publicaciones">
-  <h2>Publicaciones y Descripciones</h2>
-  <p>Aquí podrás encontrar nuestras publicaciones más recientes, historias y actividades del grupo:</p>
-  
-  <div class="galeria-grid">
-    <div class="tarjeta">
-      <img src="images/liberacion_crias1.jpg" alt="Liberación de crías">
-      <div class="descripcion">
-        <p><strong>Liberación de crías:</strong> Voluntarios liberando tortugas recién nacidas en la temporada de verano 2025.</p>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-content-container">
+        <img class="modal-content" id="modal-img">
+        <div id="modal-caption"></div>
       </div>
     </div>
 
-    <div class="tarjeta">
-      <img src="images/monitoreo_nidos.jpg" alt="Monitoreo de nidos">
-      <div class="descripcion">
-        <p><strong>Monitoreo de nidos:</strong> Nuestro equipo inspeccionando nidos y asegurando la protección de los huevos.</p>
-      </div>
-    </div>
-
-    <div class="tarjeta">
-      <img src="images/educacion_ambiental.jpg" alt="Educación ambiental">
-      <div class="descripcion">
-        <p><strong>Educación ambiental:</strong> Talleres y actividades con niños y turistas para promover la conservación.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 🐢 CSS extra para tarjetas interactivas -->
-<style>
-  .tarjeta {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    cursor: pointer;
-  }
-
-  .tarjeta img {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  .tarjeta:hover img {
-    transform: scale(1.05);
-  }
-
-  .descripcion {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    padding: 12px;
-    font-size: 14px;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-  }
-
-  .tarjeta:hover .descripcion {
-    transform: translateY(0);
-  }
-</style>
-
+    <!-- Sección de contacto -->
     <section id="contacto">
       <h2>Contacto</h2>
       <p>📍 La Ventana, Baja California Sur, México</p>
@@ -409,13 +339,35 @@
     © 2025 Chelonia Maris GT – La Ventana • Conservación con corazón
   </footer>
 
-  <!-- 🐢 Imagen de tortuga flotante con burbujas -->
   <div class="tortuga-container">
     <img src="8d4019d6-25fe-4527-a3df-eb386ae77ed3.png" alt="Tortuga marina animada" style="width:100%;height:auto;">
     <div class="burbuja"></div>
     <div class="burbuja"></div>
     <div class="burbuja"></div>
   </div>
+
+  <!-- JS modal -->
+  <script>
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-img");
+    const modalCaption = document.getElementById("modal-caption");
+
+    document.querySelectorAll('#especies img').forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        modalCaption.innerHTML = img.getAttribute('data-caption');
+      });
+    });
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.addEventListener('click', (e) => {
+      if(e.target == modal) closeModal();
+    });
+  </script>
 
 </body>
 </html>
