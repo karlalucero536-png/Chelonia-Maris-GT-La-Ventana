@@ -30,7 +30,7 @@
     header{
       position:relative;
       text-align:center;
-      padding:60px 20px;
+      padding:80px 20px;
       background:linear-gradient(90deg,var(--verde) 0%, var(--rojo) 100%);
       box-shadow:0 2px 8px var(--sombra);
       color:var(--blanco);
@@ -140,20 +140,22 @@
       margin-top:20px;
     }
 
-   /* 🐢 Tortuga animada tipo dibujo */
+   /* 🐢 Tortuga animada tipo dibujo (ahora a la izquierda) */
     .tortuga-container {
       position: fixed;
       bottom: 20px;
-      right: 20px;
-      width: 180px; /* 🐢 un poco más grande */
+      left: 20px;
+      width: 180px; /* más grande */
       height: auto;
       z-index: 999;
-      animation: nadar 6s ease-in-out infinite;
+      animation: nadar 8s ease-in-out infinite;
+      transform: scaleX(-1); /* mirando hacia la derecha */
     }
 
     @keyframes nadar{
-      0%,100%{transform:translateY(0) rotate(0deg);}
-      50%{transform:translateY(-8px) rotate(3deg);}
+      0% { transform: translateX(0) scaleX(-1); }
+      50% { transform: translateX(150px) translateY(-8px) scaleX(-1); }
+      100% { transform: translateX(0) scaleX(-1); }
     }
 
     .burbuja{
@@ -186,10 +188,10 @@
 <body>
 
   <header>
-    <img src="logo.png.png" alt="Logo Chelonia Maris GT" class="logo">
+    <img src="-logo.png.png" alt="Logo Chelonia Maris GT" class="logo">
     <h1>Chelonia Maris GT – La Ventana</h1>
     <p>Protegiendo tortugas marinas y nuestras playas • Conservación comunitaria</p>
-    <img src="cactus.png" alt="Cactus decorativo" class="cactus">
+    <img src="cactus.png.png" alt="Cactus decorativo" class="cactus">
 
     <nav>
       <a href="#quienes">Quiénes somos</a>
@@ -221,7 +223,7 @@
     <section id="galeria">
       <h2>Galería</h2>
       <div class="galeria-grid">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=60" alt="Tortuga en la playa">
+        <img src="8d4019d6-25fe-4527-a3df-eb386ae77ed3.png" alt="Tortuga marina Chelonia Maris">
         <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=60" alt="Liberación de crías">
         <img src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?auto=format&fit=crop&w=800&q=60" alt="Voluntarios en playa">
       </div>
@@ -246,7 +248,7 @@
 
   <!-- 🐢 Imagen de tortuga flotante con burbujas -->
   <div class="tortuga-container">
-    <img src="8d4019d6-25fe-4527-a3df-eb386ae77ed3.png" alt="Tortuga marina animada" style="width:100%;height:auto;">
+    <img src="tortuga.png" alt="Tortuga marina animada" style="width:100%;height:auto;">
     <div class="burbuja"></div>
     <div class="burbuja"></div>
     <div class="burbuja"></div>
