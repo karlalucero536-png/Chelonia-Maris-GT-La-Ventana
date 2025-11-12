@@ -249,73 +249,92 @@
   <h2>Especies marinas de Baja California Sur</h2>
   <p>En nuestras costas habitan diversas especies de tortugas marinas. Algunas visitan nuestras playas para anidar, otras para alimentarse, y todas son importantes para el equilibrio de los ecosistemas marinos.</p>
 
-  <div class="galeria-grid">
-
-    <!-- Tortuga Golfina -->
-    <div class="tarjeta-toggle">
-      <img src="tortuga-golfina.jpg" alt="Tortuga Golfina" onclick="toggleDescripcion(this)">
-      <div class="descripcion-toggle">
-        <p><strong>Tortuga Golfina</strong> (<em>Lepidochelys olivacea</em>) – Esta especie anida y se alimenta en nuestras costas. Su dieta consiste principalmente en pequeños invertebrados y algas. Es la tortuga más pequeña de la región y se encuentra en peligro de extinción.</p>
-      </div>
+  <!-- Tortuga Golfina -->
+  <div class="tarjeta-toggle">
+    <img src="images/tortuga_golfina.jpg" alt="Tortuga Golfina" onclick="toggleDescripcion(this)">
+    <div class="descripcion-toggle">
+      <p><strong>Tortuga Golfina</strong> (<em>Lepidochelys olivacea</em>) – Esta especie anida y se alimenta en nuestras costas. Su dieta consiste principalmente en pequeños invertebrados y algas. Es la tortuga más pequeña de la región y se encuentra en peligro de extinción.</p>
     </div>
-
-    <!-- Tortuga Laud -->
-    <div class="tarjeta-toggle">
-      <img src="tortuga-laud.jpg" alt="Tortuga Laud" onclick="toggleDescripcion(this)">
-      <div class="descripcion-toggle">
-        <p><strong>Tortuga Laud</strong> (<em>Dermochelys coriacea</em>) – Anida en nuestras playas. Es la tortuga más grande del mundo y carece de caparazón duro, teniendo una piel gruesa cubierta de cartílago. Se alimenta principalmente de medusas y está críticamente amenazada.</p>
-      </div>
-    </div>
-
-    <!-- Tortuga Verde -->
-    <div class="tarjeta-toggle">
-      <img src="images/tortuga_verde.jpg" alt="Tortuga Verde" onclick="toggleDescripcion(this)">
-      <div class="descripcion-toggle">
-        <p><strong>Tortuga Verde</strong> (<em>Chelonia mydas</em>) – Se alimenta en nuestras aguas y ocasionalmente puede anidar. Su dieta es principalmente herbívora, alimentándose de pastos marinos y algas. Está en peligro de extinción y es fundamental para la salud de los ecosistemas costeros.</p>
-      </div>
-    </div>
-
-    <!-- Tortuga Carey -->
-    <div class="tarjeta-toggle">
-      <img src="images/tortuga_carey.jpg" alt="Tortuga Carey" onclick="toggleDescripcion(this)">
-      <div class="descripcion-toggle">
-        <p><strong>Tortuga Carey</strong> (<em>Eretmochelys imbricata</em>) – Se alimenta en nuestras costas. Es reconocida por su hermoso caparazón con patrones de color y se encuentra críticamente amenazada. Su dieta incluye esponjas, moluscos y otros invertebrados marinos.</p>
-      </div>
-    </div>
-
-    <!-- Tortuga Caguama -->
-    <div class="tarjeta-toggle">
-      <img src="images/tortuga_caguama.jpg" alt="Tortuga Caguama" onclick="toggleDescripcion(this)">
-      <div class="descripcion-toggle">
-        <p><strong>Tortuga Caguama</strong> (<em>Caretta caretta</em>) – Se alimenta en nuestras aguas. Es una tortuga de gran tamaño, con caparazón marrón rojizo, que se alimenta principalmente de cangrejos, moluscos y medusas. Se encuentra en peligro de extinción.</p>
-      </div>
-    </div>
-
   </div>
+
+  <!-- Tortuga Laud -->
+  <div class="tarjeta-toggle">
+    <img src="images/tortuga_laud.jpg" alt="Tortuga Laud" onclick="toggleDescripcion(this)">
+    <div class="descripcion-toggle">
+      <p><strong>Tortuga Laud</strong> (<em>Dermochelys coriacea</em>) – Anida en nuestras playas. Es la tortuga más grande del mundo y carece de caparazón duro, teniendo una piel gruesa cubierta de cartílago. Se alimenta principalmente de medusas y está críticamente amenazada.</p>
+    </div>
+  </div>
+
+  <!-- Tortuga Verde -->
+  <div class="tarjeta-toggle">
+    <img src="images/tortuga_verde.jpg" alt="Tortuga Verde" onclick="toggleDescripcion(this)">
+    <div class="descripcion-toggle">
+      <p><strong>Tortuga Verde</strong> (<em>Chelonia mydas</em>) – Se alimenta en nuestras aguas y ocasionalmente puede anidar. Su dieta es principalmente herbívora, alimentándose de pastos marinos y algas. Está en peligro de extinción y es fundamental para la salud de los ecosistemas costeros.</p>
+    </div>
+  </div>
+
+  <!-- Tortuga Carey -->
+  <div class="tarjeta-toggle">
+    <img src="images/tortuga_carey.jpg" alt="Tortuga Carey" onclick="toggleDescripcion(this)">
+    <div class="descripcion-toggle">
+      <p><strong>Tortuga Carey</strong> (<em>Eretmochelys imbricata</em>) – Se alimenta en nuestras costas. Es reconocida por su hermoso caparazón con patrones de color y se encuentra críticamente amenazada. Su dieta incluye esponjas, moluscos y otros invertebrados marinos.</p>
+    </div>
+  </div>
+
+  <!-- Tortuga Caguama -->
+  <div class="tarjeta-toggle">
+    <img src="images/tortuga_caguama.jpg" alt="Tortuga Caguama" onclick="toggleDescripcion(this)">
+    <div class="descripcion-toggle">
+      <p><strong>Tortuga Caguama</strong> (<em>Caretta caretta</em>) – Se alimenta en nuestras aguas. Es una tortuga de gran tamaño, con caparazón marrón rojizo, que se alimenta principalmente de cangrejos, moluscos y medusas. Se encuentra en peligro de extinción.</p>
+    </div>
+  </div>
+
 </section>
 
 <!-- CSS -->
 <style>
   .tarjeta-toggle {
-    margin-bottom: 24px;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 30px;
     cursor: pointer;
   }
 
   .tarjeta-toggle img {
-    width: 100%;
-    max-width: 300px;
+    width: 300px;        /* ancho grande */
+    max-width: 40%;      /* máximo 40% del contenedor */
+    height: auto;
     border-radius: 12px;
-    object-fit: cover;
+    object-fit: contain;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    flex-shrink: 0;
   }
 
   .descripcion-toggle {
+    flex: 1;
     display: none;
-    margin-top: 12px;
     font-size: 15px;
     line-height: 1.5;
     text-align: justify;
+  }
+
+  /* Responsivo para móviles */
+  @media (max-width: 720px) {
+    .tarjeta-toggle {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tarjeta-toggle img {
+      width: 80%;
+      max-width: 300px;
+    }
+
+    .descripcion-toggle {
+      text-align: justify;
+    }
   }
 </style>
 
