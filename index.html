@@ -247,6 +247,108 @@
         <img src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?auto=format&fit=crop&w=800&q=60" alt="Voluntarios en playa">
       </div>
     </section>
+<!-- 🐢 Sección de Especies Marinas -->
+<section id="especies">
+  <h2>Especies marinas de Baja California Sur</h2>
+  <p>En nuestras costas habitan diversas especies marinas, algunas visitan nuestras playas para anidar y reproducirse. Entre las más importantes se encuentran:</p>
+
+  <div class="galeria-grid">
+    <div class="tarjeta">
+      <img src="images/tortuga_carey.jpg" alt="Tortuga Carey">
+      <div class="descripcion">
+        <p><strong>Tortuga Carey:</strong> Se encuentra en peligro crítico, anida en nuestras playas principalmente en verano.</p>
+      </div>
+    </div>
+
+    <div class="tarjeta">
+      <img src="images/tortuga_oliva.jpg" alt="Tortuga Oliva">
+      <div class="descripcion">
+        <p><strong>Tortuga Oliva:</strong> De menor tamaño, también anida en algunas playas de la bahía.</p>
+      </div>
+    </div>
+
+    <div class="tarjeta">
+      <img src="images/tortuga_lora.jpg" alt="Tortuga Lora">
+      <div class="descripcion">
+        <p><strong>Tortuga Lora:</strong> Común en la región, sus nidos se monitorean cada temporada.</p>
+      </div>
+    </div>
+
+    <div class="tarjeta">
+      <img src="images/tortuga_verde.jpg" alt="Tortuga Verde">
+      <div class="descripcion">
+        <p><strong>Tortuga Verde:</strong> Se alimenta cerca de nuestras costas y anida en algunas playas protegidas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🐢 Sección de Publicaciones -->
+<section id="publicaciones">
+  <h2>Publicaciones y Descripciones</h2>
+  <p>Aquí podrás encontrar nuestras publicaciones más recientes, historias y actividades del grupo:</p>
+  
+  <div class="galeria-grid">
+    <div class="tarjeta">
+      <img src="images/liberacion_crias1.jpg" alt="Liberación de crías">
+      <div class="descripcion">
+        <p><strong>Liberación de crías:</strong> Voluntarios liberando tortugas recién nacidas en la temporada de verano 2025.</p>
+      </div>
+    </div>
+
+    <div class="tarjeta">
+      <img src="images/monitoreo_nidos.jpg" alt="Monitoreo de nidos">
+      <div class="descripcion">
+        <p><strong>Monitoreo de nidos:</strong> Nuestro equipo inspeccionando nidos y asegurando la protección de los huevos.</p>
+      </div>
+    </div>
+
+    <div class="tarjeta">
+      <img src="images/educacion_ambiental.jpg" alt="Educación ambiental">
+      <div class="descripcion">
+        <p><strong>Educación ambiental:</strong> Talleres y actividades con niños y turistas para promover la conservación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🐢 CSS extra para tarjetas interactivas -->
+<style>
+  .tarjeta {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  .tarjeta img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .tarjeta:hover img {
+    transform: scale(1.05);
+  }
+
+  .descripcion {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 12px;
+    font-size: 14px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .tarjeta:hover .descripcion {
+    transform: translateY(0);
+  }
+</style>
 
     <section id="contacto">
       <h2>Contacto</h2>
