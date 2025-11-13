@@ -39,10 +39,10 @@
     .logo {
       display: block;
       margin: 0 auto 12px;
-      width: 180px;
+      width: 180px;          /* un poco más grande */
       height: 180px;
       border-radius: 50%;
-      object-fit: contain;
+      object-fit: contain;   /* ahora el logo se ajusta sin recortarse */
       background: none;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
@@ -65,9 +65,11 @@
       top: 18px;
       right: 24px;
       width: 80px;
+      height: auto;
       opacity: 0.9;
     }
 
+    /* Menú */
     nav{
       margin-top:28px;
       display:flex;
@@ -110,8 +112,9 @@
 
     section{margin-bottom:36px;}
     p{line-height:1.6;margin-top:6px;}
+    ul{margin-top:10px;padding-left:20px;}
 
-    /* GALERÍA COMPLETA SIN RECORTE */
+    /* GALERÍA: imágenes completas sin recorte */
     .galeria-grid{
       display:flex;
       flex-wrap:wrap;
@@ -124,16 +127,17 @@
       width:100%;
       max-width:300px;
       border-radius:12px;
-      object-fit:contain !important;   /* 🔥 IMAGEN COMPLETA */
-      height:auto;                    /* 🔥 sin recorte */
+      object-fit:contain;   /* muestra la imagen completa */
+      height:auto;
       box-shadow:0 4px 12px rgba(0,0,0,0.08);
       cursor:pointer;
     }
 
-    /* TARJETAS publicaciones */
-    .tarjeta img{
-      object-fit:contain !important;
-      height:auto !important;
+    /* Asegura que las tarjetas también muestren imágenes completas */
+    .tarjeta img {
+      width:100%;
+      height:auto;
+      object-fit:contain;
     }
 
     footer{
@@ -146,12 +150,13 @@
       margin-top:20px;
     }
 
-    /* TORTUGA flotante */
+    /* 🐢 Tortuga animada ida y vuelta */
     .tortuga-container {
       position: fixed;
       bottom: 20px;
       left: 0;
       width: 180px;
+      height: auto;
       z-index: 999;
       animation: nadar 22s ease-in-out infinite;
     }
@@ -161,44 +166,122 @@
       49% { transform: translateX(85vw) scaleX(1); }
       50% { transform: translateX(85vw) scaleX(-1); }
       99% { transform: translateX(0) scaleX(-1); }
-      100% { transform: translateX(0) scaleX(1); }
+      100%{ transform: translateX(0) scaleX(1); }
     }
 
-    /* TARJETA DONACIONES */
-    #donaciones{
+    .burbuja{
+      position:absolute;
+      bottom:15px;
+      right:45px;
+      width:10px;
+      height:10px;
+      background:rgba(255,255,255,0.7);
+      border-radius:50%;
+      animation:burbujeo 4s infinite ease-in-out;
+    }
+    .burbuja:nth-child(2){right:35px;width:6px;height:6px;animation-delay:1s;}
+    .burbuja:nth-child(3){right:55px;width:8px;height:8px;animation-delay:2s;}
+
+    @keyframes burbujeo{
+      0%{opacity:0;transform:translateY(0) scale(0.8);}
+      30%{opacity:1;}
+      100%{opacity:0;transform:translateY(-50px) scale(1.4);}
+    }
+
+    /* MODAL LATERAL (imagen izquierda, texto derecha) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      overflow: hidden; /* sin scroll en fondo */
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-inner {
+      display:flex;
+      gap:24px;
+      align-items:center;
+      justify-content:center;
+      max-width:1100px;
+      width:100%;
+    }
+
+    .modal-img {
+      max-width: 60%;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      border-radius:12px;
+      object-fit:contain;
+      box-shadow:0 6px 24px rgba(0,0,0,0.4);
+    }
+
+    .modal-text {
+      max-width: 380px;
+      color:#fff;
+      text-align:left;
+      overflow:auto;
+      max-height:80vh;
+      font-size:16px;
+      line-height:1.4;
+    }
+
+    .modal .close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      color: #fff;
+      font-size: 36px;
+      cursor:pointer;
+    }
+
+    @media(max-width:820px){
+      .modal-inner { flex-direction: column; gap:16px; }
+      .modal-img { max-width: 90%; }
+      .modal-text { max-width: 90%; }
+    }
+
+    /* DONACIONES: tarjeta limpia */
+    #donaciones {
+      margin-top: 20px;
+    }
+    .don-card {
+      max-width:480px;
+      margin:0 auto;
       background:var(--blanco);
-      padding:20px;
-      border-radius:16px;
-      box-shadow:0 4px 20px rgba(0,0,0,0.1);
-    }
-
-    .don-card{
-      padding:20px;
-      border-radius:16px;
-      background:#fdfdfd;
-      border:1px solid #e6e6e6;
-    }
-
-    .don-icon{
-      font-size:40px;
+      border-radius:14px;
+      box-shadow:0 6px 22px rgba(0,0,0,0.08);
+      padding:18px;
       text-align:center;
     }
-
-    .don-info p strong{
-      color:var(--verde);
-    }
-
-    .btn-copiar{
+    .don-icon { font-size:36px; margin-bottom:8px; }
+    .don-info p { margin:6px 0; font-weight:600; color:var(--texto); }
+    .don-info p strong { color:var(--verde); font-weight:700; }
+    .btn-copiar {
       margin-top:12px;
-      display:inline-block;
-      padding:10px 20px;
-      border-radius:12px;
+      padding:10px 18px;
+      border-radius:999px;
       background:var(--verde);
-      color:white;
-      text-decoration:none;
+      color:#fff;
+      border:none;
       cursor:pointer;
-      font-weight:600;
+      font-weight:700;
     }
+
+    @media(max-width:720px){
+      .logo{width:120px;height:120px;}
+      header h1{font-size:22px;}
+      nav a{font-size:14px;padding:8px 12px;}
+      .tortuga-container{width:100px;}
+    }
+
   </style>
 </head>
 <body>
@@ -214,107 +297,225 @@
       <a href="#que-hacemos">Qué hacemos</a>
       <a href="#galeria">Galería</a>
       <a href="#especies">Especies</a>
-      <a href="#donaciones">Donaciones</a> <!-- ✔️ AGREGADO -->
+      <a href="#donaciones">Donaciones</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
   <main>
-    
-    <!-- 🔥 QUIÉNES SOMOS -->
     <section id="quienes">
       <h2>Quiénes somos</h2>
       <p>
-        Chelonia Maris… (TEXTO ORIGINAL NO MODIFICADO)
+      "Chelonia Maris Grupo Tortuguero La Ventana" comenzó su historia hace más de 15 años con el objetivo de conservar y proteger
+        a las tortugas marinas que anidan y se alimentan en nuestras costas. 
+      Nuestro equipo está formado por volunatrios de las comunidades de El Sargento y La Ventana Baja California Sur, quienes dedican
+        su tiempo a la conservación protegiendo nidos y monitoreando las playas de la bahía.
+      A lo largo de los años hemos liberado cientos de tortugas intentando generar conciencia en los habitantes y turistas que llegan a nuestra comunidad.
+      Te invitamos a sumarte a nuestra misión de cuidar y proteger el ecosistema. 
       </p>
 
-      <!-- ✔️ IMAGEN DEL GRUPO AGREGADA -->
-      <img src="foto_grupal.jfif" 
-           alt="Grupo Chelonia Maris GT La Ventana"
-           style="width:100%;border-radius:16px;margin-top:15px;object-fit:contain;">
+      <!-- FOTO GRUPAL justo después de QUIÉNES SOMOS -->
+      <div style="margin-top:16px; text-align:center;">
+        <img src="foto grupal.jfif" alt="Foto grupal Chelonia Maris" style="width:100%; max-width:900px; border-radius:12px; object-fit:contain;">
+      </div>
+
     </section>
 
     <section id="que-hacemos">
       <h2>Qué hacemos</h2>
       <ul>
-        <li>Monitoreo de nidos…</li>
-        <li>Liberación segura…</li>
-        <li>Educación ambiental.</li>
-        <li>Monitoreos en agua.</li>
+        <li>Protegemos playas de anidación y nidos de tortuga.</li>
+        <li>Estudiamos y monitoreamos poblaciones de tortuga marina.</li>
+        <li>Impulsamos educación ambiental y buenas practicas para la conservación.</li>
       </ul>
     </section>
 
-    <!-- GALERÍA -->
-    <section id="galeria">
-      <h2>Galería</h2>
-      <div class="galeria-grid">
-        <img src="8d4019d6-25fe-4527-a3df-eb386ae77ed3.png" data-caption="Tortuga marina Chelonia Maris.">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=60" data-caption="Liberación de crías.">
-        <img src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?auto=format&fit=crop&w=800&q=60" data-caption="Voluntarios cuidando nidos.">
+  <!-- Sección Galería y Modal Unificado -->
+<section id="galeria">
+  <h2>Galería</h2>
+  <div class="galeria-grid">
+    <img src="8d4019d6-25fe-4527-a3df-eb386ae77ed3.png" alt="Tortuga marina Chelonia Maris" data-caption="Tortuga marina Chelonia Maris en la bahía de La Ventana.">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=60" alt="Liberación de crías" data-caption="Liberación de crías por voluntarios en temporada 2025.">
+    <img src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?auto=format&fit=crop&w=800&q=60" alt="Voluntarios en playa" data-caption="Voluntarios cuidando los nidos de tortuga en la playa.">
+  </div>
+</section>
+
+<section id="especies">
+  <h2>Especies marinas de Baja California Sur</h2>
+  <p>En nuestras costas habitan diversas especies de tortugas marinas. Haz clic en una imagen para conocer más información sobre cada especie.</p>
+  <div class="galeria-grid">
+    <!-- Estas imágenes abren el modal lateral con texto -->
+    <img src="tortuga-golfina.jpg" alt="Tortuga Golfina" data-caption="<strong>Tortuga Golfina</strong> (Lepidochelys olivacea) – Anida y se alimenta en nuestras costas. Dieta: invertebrados y algas. Peligro de extinción.">
+    <img src="tortuga-laud.jpg" alt="Tortuga Laud" data-caption="<strong>Tortuga Laud</strong> (Dermochelys coriacea) – Anida en nuestras playas. Es la más grande, sin caparazón duro. Se alimenta de medusas. Críticamente amenazada.">
+    <img src="tortuga-verde.jpg" alt="Tortuga Verde" data-caption="<strong>Tortuga Verde</strong> (Chelonia mydas) – Se alimenta en nuestras aguas y ocasionalmente puede anidar. Dieta: pastos marinos y algas. En peligro de extinción.">
+    <img src="tortuga-carey.jpg" alt="Tortuga Carey" data-caption="<strong>Tortuga Carey</strong> (Eretmochelys imbricata) – Se alimenta en nuestras costas. Caparazón con patrones de color. Dieta: esponjas, moluscos. Críticamente amenazada.">
+    <img src="tortuga-caguama.jpg" alt="Tortuga Caguama" data-caption="<strong>Tortuga Caguama</strong> (Caretta caretta) – Se alimenta en nuestras aguas. Gran tamaño, caparazón marrón rojizo. Dieta: cangrejos, moluscos, medusas. En peligro de extinción.">
+  </div>
+</section>
+
+<!-- Modal Unificado (se abre para imágenes con data-caption) -->
+<div id="modal" class="modal" aria-hidden="true">
+  <div class="modal-inner" role="dialog" aria-modal="true">
+    <img id="modalImage" class="modal-img" src="" alt="">
+    <div id="modalText" class="modal-text"></div>
+  </div>
+  <div class="close" id="modalClose" aria-label="Cerrar">&times;</div>
+</div>
+
+<style>
+  /* (estilos del modal ya incluidos en el head para mantener todo junto) */
+  /* (no hay cambios extra fuera de lo que pediste) */
+</style>
+
+<script>
+  // Modal lateral: abre para cualquier imagen que tenga atributo data-caption
+  (function(){
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modalImage');
+    const modalText = document.getElementById('modalText');
+    const modalClose = document.getElementById('modalClose');
+
+    function openModal(img) {
+      const src = img.getAttribute('src');
+      const caption = img.getAttribute('data-caption') || '';
+      modalImage.src = src;
+      // insert caption as HTML to allow strong tags (use only trusted content)
+      modalText.innerHTML = caption;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      // prevent background scroll
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+      modalImage.src = '';
+      modalText.innerHTML = '';
+      document.body.style.overflow = '';
+    }
+
+    // Attach click only to images that have data-caption (so species and gallery items)
+    document.querySelectorAll('img[data-caption]').forEach(img => {
+      img.addEventListener('click', (e) => {
+        openModal(img);
+      });
+    });
+
+    // Close handlers
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      // close only if background clicked (not inner content)
+      if (e.target === modal) closeModal();
+    });
+
+    // Close on Esc
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  })();
+</script>
+
+<!-- 🐢 Sección de Publicaciones -->
+<section id="publicaciones">
+  <h2>Publicaciones y Descripciones</h2>
+  <p>Aquí podrás encontrar nuestras publicaciones más recientes, historias y actividades del grupo:</p>
+  
+  <div class="galeria-grid">
+    <div class="tarjeta">
+      <img src="images/liberacion_crias1.jpg" alt="Liberación de crías">
+      <div class="descripcion">
+        <p><strong>Liberación de crías:</strong> Voluntarios liberando tortugas recién nacidas en la temporada de verano 2025.</p>
       </div>
-    </section>
+    </div>
 
-    <!-- ✔️ ESPECIES SIN MODAL -->
-    <section id="especies">
-      <h2>Especies marinas de Baja California Sur</h2>
-      <p>En nuestras costas…</p>
-
-      <div class="galeria-grid">
-        <img src="tortuga-golfina.jpg" alt="Tortuga Golfina">
-        <img src="tortuga-laud.jpg" alt="Tortuga Laud">
-        <img src="tortuga-verde.jpg" alt="Tortuga Verde">
-        <img src="tortuga-carey.jpg" alt="Tortuga Carey">
-        <img src="tortuga-caguama.jpg" alt="Tortuga Caguama">
+    <div class="tarjeta">
+      <img src="images/monitoreo_nidos.jpg" alt="Monitoreo de nidos">
+      <div class="descripcion">
+        <p><strong>Monitoreo de nidos:</strong> Nuestro equipo inspeccionando nidos y asegurando la protección de los huevos.</p>
       </div>
-    </section>
+    </div>
 
-    <!-- ✔️ SECCIÓN DONACIONES -->
-    <section id="donaciones">
-      <h2>Donaciones</h2>
-
-      <div class="don-card">
-        <div class="don-icon">🐢</div>
-
-        <div class="don-info">
-          <p><strong>CLABE:</strong> 072040010551997187</p>
-          <p><strong>Banco:</strong> Banorte</p>
-          <p><strong>Nombre:</strong> Gonzalo Pastrana Jiménez</p>
-        </div>
-
-        <button class="btn-copiar" onclick="copiarClabe()">
-          Copiar CLABE
-        </button>
+    <div class="tarjeta">
+      <img src="images/educacion_ambiental.jpg" alt="Educación ambiental">
+      <div class="descripcion">
+        <p><strong>Educación ambiental:</strong> Talleres y actividades con niños y turistas para promover la conservación.</p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <script>
-      function copiarClabe() {
-        navigator.clipboard.writeText("072040010551997187");
-        alert("CLABE copiada");
-      }
-    </script>
+<!-- 🐢 Sección DONACIONES (antes de contacto) -->
+<section id="donaciones">
+  <h2>Donaciones</h2>
 
-    <!-- CONTACTO -->
+  <div class="don-card" role="region" aria-label="Donaciones">
+    <div class="don-icon">🐢</div>
+    <div class="don-info" aria-live="polite">
+      <p><strong>CLABE:</strong> 072040010551997187</p>
+      <p><strong>Banco:</strong> Banorte</p>
+      <p><strong>Nombre:</strong> Gonzalo Pastrana Jiménez</p>
+    </div>
+
+    <button class="btn-copiar" onclick="copiarClabe()">📋 Copiar CLABE</button>
+  </div>
+</section>
+
+<script>
+  // Copiar CLABE
+  function copiarClabe(){
+    const clabe = "072040010551997187";
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(clabe).then(() => {
+        alert("CLABE copiada: " + clabe);
+      }, () => {
+        fallbackCopyTextToClipboard(clabe);
+      });
+    } else {
+      fallbackCopyTextToClipboard(clabe);
+    }
+  }
+
+  function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    // Avoid scrolling to bottom
+    textArea.style.position = "fixed";
+    textArea.style.top = 0;
+    textArea.style.left = 0;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      alert("CLABE copiada: " + text);
+    } catch (err) {
+      alert("No se pudo copiar la CLABE automáticamente. Por favor copia manualmente: " + text);
+    }
+    document.body.removeChild(textArea);
+  }
+</script>
+
     <section id="contacto">
       <h2>Contacto</h2>
-      <p>📍 La Ventana, Baja California Sur</p>
-      <p>📱 612 107 0041</p>
-      <p>📞 612 108 7495</p>
-      <p>🌐 Facebook:
-        <a href="https://www.facebook.com/CheloniaMarisGTLaVentana/" target="_blank">
+      <p>📍 La Ventana, Baja California Sur, México</p>
+      <p>📱 Principal: <a href="tel:+526121070041">612 107 0041</a></p>
+      <p>📞 Secundario: <a href="tel:+526121087495">612 108 7495</a></p>
+      <p>🌐 Facebook: 
+        <a href="https://www.facebook.com/CheloniaMarisGTLaVentana/" target="_blank" rel="noopener">
           Chelonia Maris GT – La Ventana
         </a>
       </p>
     </section>
-
   </main>
 
   <footer>
     © 2025 Chelonia Maris GT – La Ventana • Conservación con corazón
   </footer>
 
-  <div class="tortuga-container">
-    <img src="8d4019d6-25fe-4527-a3df-eb386ae77ed3.png">
+  <!-- 🐢 Imagen de tortuga flotante con burbujas -->
+  <div class="tortuga-container" aria-hidden="true">
+    <img src="8d4019d6-25fe-4527-a3df-eb386ae77ed3.png" alt="Tortuga marina animada" style="width:100%;height:auto;">
     <div class="burbuja"></div>
     <div class="burbuja"></div>
     <div class="burbuja"></div>
